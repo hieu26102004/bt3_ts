@@ -1,0 +1,31 @@
+<div class="row justify-content-center">
+    <div class="col-lg-7 col-md-9">
+        <div class="card shadow-sm mt-4">
+            <div class="card-body">
+                <h2 class="mb-4 text-center">Chỉnh sửa User</h2>
+                <form action="/put-crud" method="POST">
+                    <input type="hidden" name="id" value="<%= data.id || data._id %>">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="firstName" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="firstName" name="firstName" value="<%= data.firstName %>" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="lastName" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="lastName" name="lastName" value="<%= data.lastName %>" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="address" class="form-label">Address</label>
+                        <input type="text" class="form-control" id="address" name="address" value="<%= data.address %>">
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Cập nhật</button>
+                </form>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="/get-crud" class="btn btn-success me-2">Quay lại danh sách</a>
+            <a href="/home" class="btn btn-secondary">Trang chủ</a>
+        </div>
+    </div>
+</div>
