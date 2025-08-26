@@ -18,6 +18,7 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.models.User || mongoose.model('User', userSchema);
 
 const createNewUser = async (data: any): Promise<string> => {
+    console.log('[MongoCRUDService] createNewUser called');
     try {
         let hashPasswordFromBcrypt = await hashUserPassword(data.password);
         const user = new User({
@@ -47,6 +48,7 @@ const hashUserPassword = async (password: string): Promise<string> => {
 };
 
 const getAllUsers = async (): Promise<any[]> => {
+    console.log('[MongoCRUDService] getAllUsers called');
     try {
         let users = await User.find({}).lean();
         return users;
@@ -56,6 +58,7 @@ const getAllUsers = async (): Promise<any[]> => {
 };
 
 const getUserInfoById = async (userId: any): Promise<any> => {
+    console.log('[MongoCRUDService] getUserInfoById called');
     try {
         let user = await User.findById(userId).lean();
         return user || [];
@@ -65,6 +68,7 @@ const getUserInfoById = async (userId: any): Promise<any> => {
 };
 
 const updateUser = async (data: any): Promise<any> => {
+    console.log('[MongoCRUDService] updateUser called');
     try {
         let user = await User.findById(data.id);
         if (user) {
@@ -83,6 +87,7 @@ const updateUser = async (data: any): Promise<any> => {
 };
 
 const deleteUserById = async (userId: any): Promise<void> => {
+    console.log('[MongoCRUDService] deleteUserById called');
     try {
         await User.findByIdAndDelete(userId);
         return;
